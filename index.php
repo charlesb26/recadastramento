@@ -1,10 +1,26 @@
+<?php
+//requisição conexão com o banco
+require_once("conexao.php");
+
+//criando variável da senha criptografada senhaCrip
+//$senhaCrip = md5(123);
+
+//faço uma variavel ($query) e consulta o banco na tabela beneficiario, e verifica se possui um cpf cadastrado
+//$query = $pdo->query("SELECT * FROM beneficiario WHERE cpf = :cpf ");
+
+//pega a variavel ($query) verifica quantos registros existem com nivel ADM
+//$result = $query->fetchAll(PDO::FETCH_ASSOC);
+//$total_result = @count($result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cesta da Família</title>
+    <title><?= $nome_site?></title>
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
@@ -14,6 +30,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet"/>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    
+    <!----======== FAVICON ======== -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="CSS/style.css" />
@@ -42,22 +61,23 @@
       <div class="col-lg-6 mb-5 mb-lg-0">
         <div class="card cascading-right" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px);">
           <div class="card-body p-5 shadow-5 text-center">
-            <img src="img/logo-cesta.png"class="mb-5" width="50%">
-            <h2 class="fw-bold mb-5">RECADASTRAMENTO</h2>
-            <form action="" method="POST">
+            <img src="img/logo-cesta.png"class="mb-5" width="45%">
+            <h2 class="fw-bold mb-4">RECADASTRAMENTO</h2>
+
+            <form action="autenticar.php" method="POST">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row" text-center>
                     <div class="col-md-6 mb-6">
                     <div class="form-outline">
-                        <input type="text" class="form-control" id="cpf" onkeyup="cpfCheck(this)" maxlength="18" onkeydown="javascript: fMasc( this, mCPF );"/>
+                        <input type="text" class="form-control" name="usuario" id="cpf" onkeyup="cpfCheck(this)" maxlength="18" onkeydown="javascript: fMasc( this, mCPF );" required/>
                         <label class="form-label" for="form3Example1" PLACE>INSIRA SEU CPF &nbsp; <strong> <span id="cpfResponse"></span> </strong></label>
                     </div>
                     </div>
               </div>
               <!-- Submit button -->
-              <a href="beneficiario/index.html" type="submit" class="btn btn-primary btn-block mb-4">
+              <button type="submit" class="btn btn-primary btn-block mb-4">
                 Entrar
-              </a>
+              </button>
 
               <hr>
             
